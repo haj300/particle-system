@@ -1,14 +1,26 @@
 Drop drop;
+ArrayList<Drop> dropList;
 
 void setup() {
   size(900, 600);
-  drop = new Drop(new PVector(450, 50));
-  frameRate(10);
+  dropList = new ArrayList<Drop>();
+
+  for (int i = 0; i < 10; i++) {
+    drop = new Drop(new PVector(450, 50));
+    dropList.add(drop);
+  }
+
+  // drop = new Drop(new PVector(450, 50));
+  frameRate(100);
 }
 
 void draw() {
   background(0);
-  drop.run();
+  for (int i = 0; i < 10; i++) {
+    drop = dropList.get(i);
+    drop.update();
+    drop.display();
+  }
 }
 
 class Drop {
@@ -20,8 +32,8 @@ class Drop {
 
   Drop(PVector startPos) {
     position = startPos.copy();
-    velocity = new PVector(1, 1);
-    acceleration = new PVector(0, -0.01);
+    velocity = new PVector(random(-1, 1), random(-1, 1));
+    acceleration = new PVector(0, 0.01);
   }
 
   void run() {
