@@ -1,18 +1,14 @@
-Drop dropStart;
 Drop drop;
-//ArrayList<Drop> dropList;
 
 void setup() {
   size(900, 600);
-//  dropList = new ArrayList();
   drop = new Drop(new PVector(450, 50));
+  frameRate(10);
 }
 
 void draw() {
   background(0);
   drop.run();
-
-  // dropStart = new Drop(new PVector(450, 50));
 }
 
 class Drop {
@@ -25,7 +21,7 @@ class Drop {
   Drop(PVector startPos) {
     position = startPos.copy();
     velocity = new PVector(1, 1);
-    acceleration = new PVector(1, 1);
+    acceleration = new PVector(0, -0.01);
   }
 
   void run() {
