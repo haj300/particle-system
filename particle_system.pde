@@ -4,23 +4,27 @@ ArrayList<Drop> dropList;
 void setup() {
   size(900, 600);
   dropList = new ArrayList<Drop>();
-
-  for (int i = 0; i < 10; i++) {
-    drop = new Drop(new PVector(450, 50));
-    dropList.add(drop);
-  }
-
-  // drop = new Drop(new PVector(450, 50));
   frameRate(100);
 }
 
 void draw() {
   background(0);
-  for (int i = 0; i < 10; i++) {
+  fillArrayList();
+  run();
+ 
+  
+}
+
+void run(){
+  for (int i = dropList.size()-1; i >= 0 ; i--) {
     drop = dropList.get(i);
     drop.update();
     drop.display();
   }
+}
+
+void fillArrayList(){
+  dropList.add(new Drop(new PVector(450,50)));
 }
 
 class Drop {
