@@ -15,11 +15,15 @@ void draw() {
   
 }
 
-void run(){
-  for (int i = dropList.size()-1; i >= 0 ; i--) {
+
+void run() {
+  for (int i = 0; i < dropList.size()-1; i++) {
     drop = dropList.get(i);
     drop.update();
     drop.display();
+    if (drop.position.y>height) {
+      dropList.remove(drop);
+    }
   }
 }
 
